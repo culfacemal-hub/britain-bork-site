@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
       cur = (i + slides.length) % slides.length;
       slides[cur].classList.add('active');
       dots[cur].classList.add('active');
+      const count = document.querySelector('.hero-count b');
+      if (count) count.textContent = cur + 1;
       const v = videoOf(slides[cur]);
       if (!v || !motionOk) return;
       if (!v.getAttribute('src')) {
@@ -25,6 +27,16 @@ document.addEventListener('DOMContentLoaded', () => {
       v.play().catch(() => {});
     };
     dots.forEach((d, i) => d.addEventListener('click', () => show(i)));
+    document.querySelectorAll('.hero-arrow').forEach((a) => a.addEventListener('click', () => show(cur + +a.dataset.dir)));
+    const hero = document.querySelector('.hero');
+    let touchX = null;
+    hero.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    hero.addEventListener('touchend', (e) => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      touchX = null;
+      if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1));
+    }, { passive: true });
     show(0);
 
     // Callout anchor points in source-video pixels; shown while the capsule is open.

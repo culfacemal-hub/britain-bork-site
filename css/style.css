@@ -350,3 +350,16 @@ h1,h2,h3{font-family:'Lora', Georgia, serif;letter-spacing:-0.02em;}
   .hero-nav{position:static;padding:0 0 28px;}
   .hero-title{letter-spacing:-0.02em;line-height:1.15;}
 }
+.hero-nav{align-items:center;gap:10px;}
+.hero-dot{width:56px;}
+.hero-dot i{height:5px;background:rgba(10,21,48,.25);}
+.hero-arrow{
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.9);
+  color:var(--ink);font-size:24px;line-height:1;cursor:pointer;box-shadow:var(--shadow-card);
+  display:flex;align-items:center;justify-content:center;padding-bottom:3px;transition:all .2s ease;
+}
+.hero-arrow:hover{background:var(--blue);border-color:var(--blue);color:#fff;transform:scale(1.06);}
+.hero-arrow:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+.hero-count{font-size:13px;color:var(--ink-soft);font-variant-numeric:tabular-nums;margin-left:4px;}
+.hero-count b{color:var(--ink);}
+@media (max-width:900px){.hero-dot{width:36px;}}
