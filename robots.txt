@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://culfacemal-hub.github.io/britain-bork-site/sitemap.xml

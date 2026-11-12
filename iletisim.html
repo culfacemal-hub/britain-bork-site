@@ -4,28 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>İletişim | Britain Bork</title>
+<meta name="description" content="Britain Bork ile iletişime geçin: Seyrantepe, Kâğıthane/İstanbul adresi, telefon, e-posta ve online form.">
+<link rel="canonical" href="https://culfacemal-hub.github.io/britain-bork-site/iletisim.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="İletişim | Britain Bork">
+<meta property="og:description" content="Britain Bork ile iletişime geçin.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<nav class="site-nav">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">
-      <div class="logo-mark"><span class="lhs">BRITAIN</span><span class="rhs">Bork</span></div>
-      <div class="logo-sub">Nature &amp; Technology, Perfectly Blended</div>
-    </a>
-    <nav class="main-nav">
-      <a href="urunler.html">Ürünler</a>
-      <a href="hakkimizda.html">Hakkımızda</a>
-      <a href="liborkcaps.html">Li-Bork-Caps® Nedir?</a>
-      <a href="sertifikalar.html">Sertifikalarımız</a>
-      <a href="iletisim.html" class="active">İletişim</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Menü">☰</button>
-  </div>
-</nav>
+<div id="site-header" data-active="iletisim"></div>
 
 <section class="page-hero">
   <div class="container-x">
@@ -56,20 +46,26 @@
       </div>
     </div>
 
-    <form class="contact-form">
+    <form class="contact-form" action="https://formsubmit.co/info@bork.com.tr" method="POST">
+      <input type="hidden" name="_subject" value="Britain Bork sitesinden yeni mesaj">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://culfacemal-hub.github.io/britain-bork-site/iletisim.html?sent=1">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
       <label for="name">Ad Soyad</label>
-      <input id="name" type="text" placeholder="Adınız Soyadınız" required>
+      <input id="name" name="name" type="text" placeholder="Adınız Soyadınız" required>
 
       <label for="email">E-posta</label>
-      <input id="email" type="email" placeholder="ornek@eposta.com" required>
+      <input id="email" name="email" type="email" placeholder="ornek@eposta.com" required>
 
       <label for="subject">Konu</label>
-      <input id="subject" type="text" placeholder="Mesaj konusu">
+      <input id="subject" name="subject" type="text" placeholder="Mesaj konusu">
 
       <label for="message">Mesajınız</label>
-      <textarea id="message" rows="5" placeholder="Mesajınızı buraya yazın..." required></textarea>
+      <textarea id="message" name="message" rows="5" placeholder="Mesajınızı buraya yazın..." required></textarea>
 
       <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Gönder</button>
+      <p id="form-sent-note" style="display:none;text-align:center;color:var(--blue);font-size:13.5px;margin-top:14px;">Mesajınız alındı, teşekkürler!</p>
     </form>
   </div>
 </section>
@@ -89,42 +85,9 @@
   </div>
 </section>
 
-<footer class="site-footer">
-  <div class="container-x">
-    <div class="footer-top">
-      <div>
-        <div class="logo-mark"><span class="lhs">BRITAIN</span><span class="rhs">Bork</span></div>
-        <p style="margin-top:14px;">Nature and Technology, Perfectly Blended. İstanbul merkezli premium gıda takviyesi markası.</p>
-        <div class="badge-row">
-          <span>GMP</span><span>ISO 9001</span><span>ISO 14001</span><span>ISO 22000</span><span>HALAL</span>
-        </div>
-      </div>
-      <div>
-        <h5>Kurumsal</h5>
-        <a href="hakkimizda.html">Hakkımızda</a>
-        <a href="liborkcaps.html">Li-Bork-Caps® Nedir?</a>
-        <a href="sertifikalar.html">Sertifikalarımız</a>
-      </div>
-      <div>
-        <h5>Ürünler</h5>
-        <a href="urunler.html">Tüm Ürünler</a>
-        <a href="urunler.html#omega">Omega-3</a>
-        <a href="urunler.html#anne-bebek">Anne &amp; Bebek</a>
-      </div>
-      <div>
-        <h5>İletişim</h5>
-        <a href="tel:+902124383824">0 (212) 438 38 24</a>
-        <a href="mailto:info@bork.com.tr">info@bork.com.tr</a>
-        <p>Seyrantepe, Binnur Sk. No:11, Kâğıthane/İstanbul</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Britain Bork. Tüm hakları saklıdır.</span>
-      <span>Bu ürünler hastalıkları teşhis, tedavi etmek veya önlemek amacıyla kullanılmaz.</span>
-    </div>
-  </div>
-</footer>
+<div id="site-footer"></div>
 
+<script src="js/partials.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

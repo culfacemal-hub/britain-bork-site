@@ -1,29 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('.main-nav');
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  const featured = document.querySelector('[data-render="featured"]');
+  if (featured && typeof borkRenderProducts === 'function') {
+    const slugs = (featured.dataset.slugs || '').split(',').map((s) => s.trim());
+    borkRenderProducts('[data-render="featured"]', slugs);
+  }
+
+  const full = document.querySelector('[data-render="all"]');
+  if (full && typeof borkRenderProducts === 'function') {
+    borkRenderProducts('[data-render="all"]');
   }
 
   const form = document.querySelector('.contact-form');
   if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+    form.addEventListener('submit', () => {
       const btn = form.querySelector('button[type="submit"]');
-      btn.textContent = 'Gönderildi ✓';
+      btn.textContent = 'Gönderiliyor…';
       btn.disabled = true;
     });
+    if (new URLSearchParams(location.search).get('sent') === '1') {
+      const note = document.getElementById('form-sent-note');
+      if (note) note.style.display = 'block';
+    }
   }
 
   const chips = document.querySelectorAll('.filter-chip');
-  const cards = document.querySelectorAll('[data-category]');
-  if (chips.length && cards.length) {
+  if (chips.length) {
     chips.forEach((chip) => {
       chip.addEventListener('click', () => {
         chips.forEach((c) => c.classList.remove('active'));
         chip.classList.add('active');
         const filter = chip.dataset.filter;
-        cards.forEach((card) => {
+        document.querySelectorAll('[data-category]').forEach((card) => {
           const match = filter === 'all' || card.dataset.category === filter;
           card.style.display = match ? '' : 'none';
         });
