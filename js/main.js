@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobile = heroVideo.classList.contains('hero-video-mobile');
     const src = mobile ? { w: 1261, h: 946 } : { w: 2206, h: 946 };
     const points = mobile
-      ? [['.hc-oil', 546, 231, 150], ['.hc-tab', 805, 679, 80]]
-      : [['.hc-oil', 1396, 231, 150], ['.hc-tab', 1655, 679, 120]];
+      ? [['.hc-oil', 475, 403, 170], ['.hc-tab', 683, 481, 150]]
+      : [['.hc-oil', 1395, 403, 170], ['.hc-tab', 1603, 481, 150]];
     const callouts = points.map(([sel, x, y, len]) => ({ el: document.querySelector(sel), x, y, len }));
     const place = () => {
       const r = heroVideo.getBoundingClientRect();
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addEventListener('resize', place);
     const tick = () => {
       const t = heroVideo.currentTime;
-      const open = t > 1.6 && t < 6.2;
+      const open = t > 3.5 && t < 6.6;
       callouts.forEach((c) => c.el.classList.toggle('on', open));
       requestAnimationFrame(tick);
     };
