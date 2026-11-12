@@ -1,19 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
   const motionOk = !matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const heroVideo = [...document.querySelectorAll('.hero-video')].find((v) => getComputedStyle(v).display !== 'none');
-  if (heroVideo && motionOk) {
-    heroVideo.src = heroVideo.dataset.src;
-    heroVideo.play().catch(() => {});
+  const slides = [...document.querySelectorAll('.hero-slide')];
+  if (slides.length) {
+    const dots = [...document.querySelectorAll('.hero-dot')];
+    const videoOf = (slide) => [...slide.querySelectorAll('.hero-video')].find((v) => getComputedStyle(v).display !== 'none');
+    let cur = 0;
+    const show = (i) => {
+      const prev = videoOf(slides[cur]);
+      if (prev) prev.pause();
+      slides[cur].classList.remove('active');
+      dots[cur].classList.remove('active');
+      dots[cur].style.setProperty('--p', 0);
+      cur = (i + slides.length) % slides.length;
+      slides[cur].classList.add('active');
+      dots[cur].classList.add('active');
+      const v = videoOf(slides[cur]);
+      if (!v || !motionOk) return;
+      if (!v.getAttribute('src')) {
+        v.src = v.dataset.src;
+        v.addEventListener('ended', () => show(cur + 1));
+      } else {
+        v.currentTime = 0;
+      }
+      v.play().catch(() => {});
+    };
+    dots.forEach((d, i) => d.addEventListener('click', () => show(i)));
+    show(0);
 
     // Callout anchor points in source-video pixels; shown while the capsule is open.
-    const mobile = heroVideo.classList.contains('hero-video-mobile');
+    const first = videoOf(slides[0]);
+    const mobile = first.classList.contains('hero-video-mobile');
     const src = mobile ? { w: 1261, h: 946 } : { w: 2206, h: 946 };
     const points = mobile
       ? [['.hc-oil', 475, 403, 170], ['.hc-tab', 683, 481, 150]]
       : [['.hc-oil', 1395, 403, 170], ['.hc-tab', 1603, 481, 150]];
     const callouts = points.map(([sel, x, y, len]) => ({ el: document.querySelector(sel), x, y, len }));
     const place = () => {
-      const r = heroVideo.getBoundingClientRect();
+      const r = first.getBoundingClientRect();
       const k = Math.max(r.width / src.w, r.height / src.h);
       const offX = mobile ? (r.width - src.w * k) / 2 : r.width - src.w * k;
       const offY = (r.height - src.h * k) / 2;
@@ -25,13 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     place();
     addEventListener('resize', place);
-    const tick = () => {
-      const t = heroVideo.currentTime;
-      const open = t > 3.5 && t < 6.6;
-      callouts.forEach((c) => c.el.classList.toggle('on', open));
+    if (motionOk) {
+      const tick = () => {
+        const v = videoOf(slides[cur]);
+        if (v && v.duration) dots[cur].style.setProperty('--p', v.currentTime / v.duration);
+        const open = cur === 0 && first.currentTime > 3.5 && first.currentTime < 6.6;
+        callouts.forEach((c) => c.el.classList.toggle('on', open));
+        requestAnimationFrame(tick);
+      };
       requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
+    }
   }
 
   if (motionOk) {

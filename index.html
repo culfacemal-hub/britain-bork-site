@@ -14,21 +14,23 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=7">
+<link rel="stylesheet" href="css/style.css?v=8">
 </head>
 <body>
 
 <div id="site-header" data-active="index"></div>
 
-<section class="hero">
-  <div class="hero-media">
-    <video class="hero-video hero-video-desktop" data-src="video/hero-capsule.mp4" poster="video/hero-poster.jpg" muted loop playsinline preload="none" aria-label="Li-Bork-Caps kapsülü açılıyor: içinden sıvı yağ ve tablet çıkıyor"></video>
-    <video class="hero-video hero-video-mobile" data-src="video/hero-capsule-mobile.mp4" poster="video/hero-poster-mobile.jpg" width="840" height="630" muted loop playsinline preload="none" aria-label="Li-Bork-Caps kapsülü açılıyor: içinden sıvı yağ ve tablet çıkıyor"></video>
-    <div class="hero-callout hc-oil" aria-hidden="true"><span class="hc-label"><b>Sıvı faz</b> taşıyıcı yağ</span></div>
-    <div class="hero-callout hc-tab" aria-hidden="true"><span class="hc-label"><b>Katı faz</b> tablet</span></div>
-    <div class="hero-fade" aria-hidden="true"></div>
-  </div>
-  <div class="container-x hero-inner">
+<section class="hero" aria-roledescription="carousel" aria-label="Li-Bork-Caps tanıtımı">
+  <div class="hero-slides">
+    <div class="hero-slide active">
+      <div class="hero-media">
+        <video class="hero-video hero-video-desktop" data-src="video/hero-capsule.mp4" poster="video/hero-poster.jpg" muted playsinline preload="none" aria-label="Li-Bork-Caps kapsülü açılıyor: içinden sıvı yağ ve tablet çıkıyor"></video>
+        <video class="hero-video hero-video-mobile" data-src="video/hero-capsule-mobile.mp4" poster="video/hero-poster-mobile.jpg" width="840" height="630" muted playsinline preload="none" aria-label="Li-Bork-Caps kapsülü açılıyor: içinden sıvı yağ ve tablet çıkıyor"></video>
+        <div class="hero-callout hc-oil" aria-hidden="true"><span class="hc-label"><b>Sıvı faz</b> taşıyıcı yağ</span></div>
+        <div class="hero-callout hc-tab" aria-hidden="true"><span class="hc-label"><b>Katı faz</b> tablet</span></div>
+        <div class="hero-fade" aria-hidden="true"></div>
+      </div>
+      <div class="container-x hero-inner">
     <div class="hero-copy">
       <div class="hero-eyebrow"><span class="live-dot"></span>Li-Bork-Caps® · Türkiye'de ilk likit kapsül</div>
       <h1>Vücudun <em>%98'ini</em> kullandığı kapsül.</h1>
@@ -43,6 +45,49 @@
         <a href="liborkcaps.html" class="btn btn-outline">Teknolojiyi İncele</a>
       </div>
     </div>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-media">
+        <video class="hero-video hero-video-desktop" data-src="video/hero-glass.mp4" poster="video/hero-glass.jpg" muted playsinline preload="none" aria-label="Şeffaf kapsül açılıyor, altın renkli yağ damlası ve tablet havada süzülüyor"></video>
+        <video class="hero-video hero-video-mobile" data-src="video/hero-glass-mobile.mp4" poster="video/hero-glass-mobile.jpg" width="840" height="630" muted playsinline preload="none" aria-label="Şeffaf kapsül açılıyor, altın renkli yağ damlası ve tablet havada süzülüyor"></video>
+        <div class="hero-fade" aria-hidden="true"></div>
+      </div>
+      <div class="container-x hero-inner">
+        <div class="hero-copy">
+          <div class="hero-eyebrow"><span class="live-dot"></span>Tablet in Liquid Capsule</div>
+          <div class="hero-title">Tek kapsülde <em>iki faz</em>.</div>
+          <p>Vitamin ve mineraller katı tablette, faydalı yağlar sıvı fazda. İkisi aynı kapsülde, birbirine karışmadan — iki ayrı ürün yerine tek kapsül.</p>
+          <div class="hero-cta">
+            <a href="liborkcaps.html" class="btn btn-primary btn-glow">Teknolojiyi İncele <span aria-hidden="true">→</span></a>
+            <a href="urunler.html" class="btn btn-outline">Ürünleri Keşfet</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-media">
+        <video class="hero-video hero-video-desktop" data-src="video/hero-classic.mp4" poster="video/hero-classic.jpg" muted playsinline preload="none" aria-label="Bantlı Li-Bork-Caps kapsülü açılıyor, içinden yağ ve tablet çıkıyor"></video>
+        <video class="hero-video hero-video-mobile" data-src="video/hero-classic-mobile.mp4" poster="video/hero-classic-mobile.jpg" width="840" height="630" muted playsinline preload="none" aria-label="Bantlı Li-Bork-Caps kapsülü açılıyor, içinden yağ ve tablet çıkıyor"></video>
+        <div class="hero-fade" aria-hidden="true"></div>
+      </div>
+      <div class="container-x hero-inner">
+        <div class="hero-copy">
+          <div class="hero-eyebrow"><span class="live-dot"></span>Softgel'e alternatif</div>
+          <div class="hero-title">Parafinsiz. <em>Bitki bazlı.</em> Hava geçirmez.</div>
+          <p>Yumuşak kapsüllerdeki parafin yok. Bitki bazlı kapsül vücutta kolayca çözülür; hava geçirmez yapısı yağı oksijenden korur.</p>
+          <div class="hero-cta">
+            <a href="urunler.html" class="btn btn-primary btn-glow">Ürünleri Keşfet <span aria-hidden="true">→</span></a>
+            <a href="sertifikalar.html" class="btn btn-outline">Sertifikalar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-nav">
+    <button type="button" class="hero-dot active" aria-label="Slayt 1"><i></i></button>
+    <button type="button" class="hero-dot" aria-label="Slayt 2"><i></i></button>
+    <button type="button" class="hero-dot" aria-label="Slayt 3"><i></i></button>
   </div>
 </section>
 
@@ -187,6 +232,6 @@
 
 <script src="js/products.js"></script>
 <script src="js/partials.js"></script>
-<script src="js/main.js?v=7"></script>
+<script src="js/main.js?v=8"></script>
 </body>
 </html>
