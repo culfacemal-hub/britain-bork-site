@@ -1,11 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const heroVideos = document.querySelectorAll('.hero-video');
-  if (heroVideos.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    heroVideos.forEach((v) => {
-      if (getComputedStyle(v).display === 'none') return;
-      v.src = v.dataset.src;
-      v.play().catch(() => {});
-    });
+  const motionOk = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const heroVideo = [...document.querySelectorAll('.hero-video')].find((v) => getComputedStyle(v).display !== 'none');
+  if (heroVideo && motionOk) {
+    heroVideo.src = heroVideo.dataset.src;
+    heroVideo.play().catch(() => {});
+
+    // Callout anchor points in source-video pixels; shown while the capsule is open.
+    const mobile = heroVideo.classList.contains('hero-video-mobile');
+    const src = mobile ? { w: 810, h: 600 } : { w: 1920, h: 800 };
+    const points = mobile
+      ? [['.hc-oil', 415, 304, 175], ['.hc-tab', 678, 324, 105]]
+      : [['.hc-oil', 1335, 410, 260], ['.hc-tab', 1685, 435, 160]];
+    const callouts = points.map(([sel, x, y, len]) => ({ el: document.querySelector(sel), x, y, len }));
+    const place = () => {
+      const r = heroVideo.getBoundingClientRect();
+      const k = Math.max(r.width / src.w, r.height / src.h);
+      const offX = mobile ? (r.width - src.w * k) / 2 : r.width - src.w * k;
+      const offY = (r.height - src.h * k) / 2;
+      callouts.forEach((c) => {
+        c.el.style.left = offX + c.x * k + 'px';
+        c.el.style.top = offY + c.y * k + 'px';
+        c.el.style.setProperty('--len', c.len * k + 'px');
+      });
+    };
+    place();
+    addEventListener('resize', place);
+    const tick = () => {
+      const t = heroVideo.currentTime;
+      const open = t > 3.4 && t < 5.4;
+      callouts.forEach((c) => c.el.classList.toggle('on', open));
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   }
 
   const featured = document.querySelector('[data-render="featured"]');
@@ -17,6 +43,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const full = document.querySelector('[data-render="all"]');
   if (full && typeof borkRenderProducts === 'function') {
     borkRenderProducts('[data-render="all"]');
+  }
+
+  if (motionOk && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        setTimeout(() => e.target.classList.remove('reveal', 'in'), 1300);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.section-head, .category-card, .step, .stat-card, .timeline-item, .check-card, .testimonial, .cert-card, .product-card, .cta-band, .split > *, .prose > *').forEach((el) => {
+      const i = [...el.parentElement.children].indexOf(el);
+      el.style.setProperty('--d', Math.min(i, 5) * 70 + 'ms');
+      el.classList.add('reveal');
+      io.observe(el);
+    });
   }
 
   const form = document.querySelector('.contact-form');
