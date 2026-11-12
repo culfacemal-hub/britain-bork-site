@@ -83,7 +83,7 @@ h1,h2,h3{font-family:'Lora', Georgia, serif;letter-spacing:-0.02em;}
 @media (max-width:900px){
   .hero-media{position:relative;inset:auto;}
   .hero-video-desktop{display:none;}
-  .hero-video-mobile{display:block;height:auto;aspect-ratio:810/600;object-position:center;}
+  .hero-video-mobile{display:block;height:auto;aspect-ratio:4/3;object-position:center;}
   .hero-inner{min-height:0;}
   .hero-copy{max-width:100%;padding:8px 0 48px;}
   .hero h1{font-weight:400;line-height:1.15;letter-spacing:-0.02em;}

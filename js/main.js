@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Callout anchor points in source-video pixels; shown while the capsule is open.
     const mobile = heroVideo.classList.contains('hero-video-mobile');
-    const src = mobile ? { w: 810, h: 600 } : { w: 1920, h: 800 };
+    const src = mobile ? { w: 1261, h: 946 } : { w: 2206, h: 946 };
     const points = mobile
-      ? [['.hc-oil', 415, 304, 175], ['.hc-tab', 678, 324, 105]]
-      : [['.hc-oil', 1335, 410, 260], ['.hc-tab', 1685, 435, 160]];
+      ? [['.hc-oil', 546, 231, 150], ['.hc-tab', 805, 679, 80]]
+      : [['.hc-oil', 1396, 231, 150], ['.hc-tab', 1655, 679, 120]];
     const callouts = points.map(([sel, x, y, len]) => ({ el: document.querySelector(sel), x, y, len }));
     const place = () => {
       const r = heroVideo.getBoundingClientRect();
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addEventListener('resize', place);
     const tick = () => {
       const t = heroVideo.currentTime;
-      const open = t > 3.4 && t < 5.4;
+      const open = t > 1.6 && t < 6.2;
       callouts.forEach((c) => c.el.classList.toggle('on', open));
       requestAnimationFrame(tick);
     };
