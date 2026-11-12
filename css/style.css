@@ -307,3 +307,31 @@ h1,h2,h3{font-family:'Lora', Georgia, serif;letter-spacing:-0.02em;}
   .reveal.in{opacity:1;transform:none;}
 }
 @keyframes rise{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+
+/* HERO PUNCH */
+.hero-eyebrow{align-items:center;gap:10px;background:rgba(255,255,255,.7);backdrop-filter:blur(8px);border:1px solid var(--line);padding:8px 16px;border-radius:999px;}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(123,192,67,.6);}
+.hero h1{font-size:clamp(36px,4.6vw,72px);line-height:1.02;}
+.hero h1 em{background:linear-gradient(100deg,#1976D2 0%,#d98a00 55%,#e0a100 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-stats{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px;}
+.hero-stat{background:rgba(255,255,255,.72);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.9);border-radius:16px;padding:12px 18px;box-shadow:var(--shadow-card);min-width:112px;}
+.hero-stat b{display:block;font-family:'Lora',serif;font-size:26px;font-weight:600;color:var(--ink);line-height:1.1;white-space:nowrap;}
+.hero-stat span{font-size:12px;color:var(--ink-soft);}
+.hero-stat b span{font-size:inherit;color:inherit;}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-glow{position:relative;overflow:hidden;box-shadow:0 12px 28px -10px rgba(25,118,210,.65);}
+.btn-glow span{transition:transform .25s ease;}
+.btn-glow:hover span{transform:translateX(4px);}
+@media (prefers-reduced-motion: no-preference){
+  .live-dot{animation:pulse 1.8s ease-out infinite;}
+  .btn-glow::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:shine 3.2s ease-in-out infinite;}
+}
+@keyframes pulse{to{box-shadow:0 0 0 10px rgba(123,192,67,0);}}
+@keyframes shine{0%,55%{left:-60%;}100%{left:130%;}}
+@media (max-width:900px){
+  .hero-eyebrow{font-size:10.5px;letter-spacing:1px;padding:7px 12px;}
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .hero-stat{min-width:0;padding:10px 12px;}
+  .hero-stat b{font-size:21px;}
+  .hero-stat span{font-size:11px;}
+}

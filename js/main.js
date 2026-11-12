@@ -34,6 +34,20 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(tick);
   }
 
+  if (motionOk) {
+    document.querySelectorAll('[data-count]').forEach((el) => {
+      const target = +el.dataset.count, prefix = el.dataset.prefix || '';
+      const from = target === 0 ? 100 : 0, t0 = performance.now() + 500;
+      const step = (now) => {
+        const p = Math.min(Math.max((now - t0) / 1400, 0), 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = prefix + Math.round(from + (target - from) * eased);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }
+
   const featured = document.querySelector('[data-render="featured"]');
   if (featured && typeof borkRenderProducts === 'function') {
     const slugs = (featured.dataset.slugs || '').split(',').map((s) => s.trim());
