@@ -14,30 +14,25 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
 
 <div id="site-header" data-active="index"></div>
 
 <section class="hero">
-  <div class="hero-blobs"><div class="b1"></div><div class="b2"></div></div>
+  <div class="hero-media">
+    <video class="hero-video hero-video-desktop" data-src="video/hero-capsule.mp4" poster="video/hero-fe-poster.47ecec3e.webp" muted loop playsinline preload="none" aria-label="Li-Bork-Caps kapsülü açılıyor: içinden sıvı yağ ve tablet çıkıyor"></video>
+    <video class="hero-video hero-video-mobile" data-src="video/hero-capsule-mobile.mp4" poster="video/hero-fe-mobile-poster.620d5e96.webp" width="810" height="600" muted loop playsinline preload="none" aria-label="Li-Bork-Caps kapsülü açılıyor: içinden sıvı yağ ve tablet çıkıyor"></video>
+    <div class="hero-fade" aria-hidden="true"></div>
+  </div>
   <div class="container-x hero-inner">
-    <div>
+    <div class="hero-copy">
       <div class="hero-eyebrow">Li-Bork-Caps® Likit Kapsül Teknolojisi · Bork Health</div>
       <h1>Yeni nesil kapsül.<br><em>Sıvı dolu sert kapsül</em> — biyoyararlanımı %98'e taşıyan teknoloji.</h1>
       <p>Toz esaslı tablet ve kapsüllerin aksine, aktif maddeler sıvı fazda, çözülmüş ve yoğun konsantrasyonda bulunur: vücut 2-5 dakikada, kayıpsız emer. Li-Bork-Caps® hattı yalnızca Britain Bork'ta.</p>
       <a href="urunler.html" class="btn btn-primary">Ürünleri Keşfet</a>
       <a href="liborkcaps.html" class="btn btn-outline" style="margin-left:12px;">Teknolojiyi İncele</a>
-    </div>
-    <div class="hero-visual">
-      <svg class="capsule-anim" viewBox="0 0 320 180" width="320" height="180" aria-label="Li-Bork-Caps kapsül animasyonu">
-        <ellipse class="cap-shadow" cx="160" cy="150" rx="70" ry="10"/>
-        <circle class="cap-drop" cx="160" cy="88" r="9"/>
-        <rect class="cap-tablet" x="146" y="80" width="28" height="14" rx="7"/>
-        <g class="cap-top"><path d="M60 90a60 30 0 0 1 120 0z" fill="var(--blue)"/></g>
-        <g class="cap-bottom"><path d="M60 90a60 30 0 0 0 120 0z" fill="#fff" stroke="var(--line)" stroke-width="2"/></g>
-      </svg>
     </div>
   </div>
 </section>
@@ -183,6 +178,6 @@
 
 <script src="js/products.js"></script>
 <script src="js/partials.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=3"></script>
 </body>
 </html>

@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const heroVideos = document.querySelectorAll('.hero-video');
+  if (heroVideos.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    heroVideos.forEach((v) => {
+      if (getComputedStyle(v).display === 'none') return;
+      v.src = v.dataset.src;
+      v.play().catch(() => {});
+    });
+  }
+
   const featured = document.querySelector('[data-render="featured"]');
   if (featured && typeof borkRenderProducts === 'function') {
     const slugs = (featured.dataset.slugs || '').split(',').map((s) => s.trim());
