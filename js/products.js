@@ -128,15 +128,15 @@ const BORK_PRODUCTS = [
 ];
 
 function borkProductCardHTML(p) {
-  return `<div class="product-card" data-category="${p.category}">
+  return `<a class="product-card" href="urun.html?u=${p.slug}" data-category="${p.category}">
     <div class="product-thumb"><img src="images/products/${p.img}" alt="${p.name}" width="700" height="700" loading="lazy"></div>
     <div class="product-body">
       <div class="product-tag">Britain Bork · ${p.categoryLabel}</div>
       <h4>${p.name} Kapsül №30</h4>
       <p class="product-desc">${p.desc}</p>
-      <div class="product-meta"><span>${p.pack}</span><span class="arrow">→</span></div>
+      <div class="product-meta"><span>${p.pack}</span><span class="arrow">İncele →</span></div>
     </div>
-  </div>`;
+  </a>`;
 }
 
 function borkRenderProducts(containerSelector, slugs) {
